@@ -8,6 +8,9 @@ package lab2herencia;
  *
  * @author gabri
  */
+
+import javax.swing.SwingUtilities;
+
 public class Lab2Herencia {
 
     /**
@@ -15,6 +18,10 @@ public class Lab2Herencia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        SwingUtilities.invokeLater(() -> {
+            VentanaPrincipal ventana = new VentanaPrincipal();
+            ventana.setVisible(true);
+        });
     }
     
 }

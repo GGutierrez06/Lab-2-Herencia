@@ -29,7 +29,7 @@ public class ClaseEmpresa {
         return (buscarEmpleadoRecursivo(codigo,indice+1));
     }
     
-    public boolean RegistrarEmpleado(Empleado empleadoNuevo){
+    public boolean registrarEmpleado(Empleado empleadoNuevo){
         if (buscarEmpleado(empleadoNuevo.getCodigo()) == null){
             Empleados.add(empleadoNuevo);
             return true;
@@ -39,7 +39,7 @@ public class ClaseEmpresa {
         }
     }
     
-    public boolean RegistrarHorasTrabajadas(int horas, int codigo){
+    public boolean registrarHorasTrabajadas(int horas, int codigo){
         Empleado empleadoActual = buscarEmpleado(codigo);
         
         if (empleadoActual == null){
@@ -56,7 +56,7 @@ public class ClaseEmpresa {
         return true;
     }
     
-    public boolean RegistrarVentas(int ventas, int codigo){
+    public boolean registrarVentas(double ventas, int codigo){
         Empleado empleadoActual = buscarEmpleado(codigo);
         
         if (empleadoActual==null){
@@ -74,7 +74,7 @@ public class ClaseEmpresa {
         }
     }
     
-    public boolean ActualizarFinContrato(Calendar fechaNueva, int codigo){
+    public boolean actualizarFinContrato(Calendar fechaNueva, int codigo){
         Empleado empleadoActual = buscarEmpleado(codigo);
         
         if (empleadoActual==null){
@@ -103,7 +103,7 @@ public class ClaseEmpresa {
         return empleadoActual.calcularPago();
     }
     
-    public String GenerarReportes(){
+    public String generarReportes(){
         int contEstandar = 0, contTemporal = 0, contVentas = 0;
         String reporte = " ------ REPORTE DE EMPLEADOS ------ \n";
         
