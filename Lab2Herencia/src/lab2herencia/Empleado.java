@@ -14,7 +14,7 @@ public class Empleado {
         this.salarioBase = salarioBase;
         this.foto = foto;
         this.fechaContrato = fechaContrato;
-        horasTrabajadas = 0;
+        this.horasTrabajadas = 0;
     }
 
     public int getCodigo() {
@@ -37,7 +37,7 @@ public class Empleado {
         return foto;
     }
     
-    public double getHorasTrabajadas() {
+    public int getHorasTrabajadas() {
         if (horasTrabajadas > 160) {
             return 160;
         }
@@ -47,7 +47,7 @@ public class Empleado {
     
      public void registrarHoras(int horas){
         if (horas<0) {
-            throw new IllegalArgumentException("las horas no pueden ser negativas o cero");
+            throw new IllegalArgumentException("las horas no pueden ser negativas");
         }
         horasTrabajadas+=horas;
     }
