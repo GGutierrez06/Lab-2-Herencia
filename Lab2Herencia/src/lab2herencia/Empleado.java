@@ -8,7 +8,7 @@ public class Empleado {
     protected int horasTrabajadas;
     protected String foto;
 
-    public Empleado(int codigo, String nombre, Calendar fechaContrato, double salarioBase, int horasTrabajadas, String foto) {
+    public Empleado(int codigo, String nombre, Calendar fechaContrato, double salarioBase, String foto) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.salarioBase = salarioBase;
