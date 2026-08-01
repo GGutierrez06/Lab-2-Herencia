@@ -45,11 +45,10 @@ public class Empleado {
         return horasTrabajadas;
     }
     
-     public void registrarHoras(int horas){
-        if (horas<0) {
-            throw new IllegalArgumentException("las horas no pueden ser negativas");
+     public void registrarHorasTrabajadas(int horas){
+        if (horas>0) {
+            this.horasTrabajadas += horas;
         }
-        horasTrabajadas+=horas;
     }
      
     public double calcularPago() {

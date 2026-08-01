@@ -11,7 +11,7 @@ public class ClaseEmpresa {
     }
     
     public ArrayList<Empleado> getEmpleados(){
-        return Empleados;
+        return Empleados;   
     }
     public Empleado buscarEmpleado(int codigo){
         return buscarEmpleadoRecursivo(codigo,0);
@@ -52,7 +52,7 @@ public class ClaseEmpresa {
             return false;
         }
         
-        empleadoActual.RegistrarHorasTrabajadas(horas);
+        empleadoActual.registrarHorasTrabajadas(horas);
         return true;
     }
     
@@ -66,7 +66,7 @@ public class ClaseEmpresa {
         
         if (empleadoActual instanceof EmpleadoVentas){
             EmpleadoVentas empleadoActualVentas = (EmpleadoVentas) empleadoActual;
-            empleadoActualVentas.RegistrarVentas(ventas);
+            empleadoActualVentas.registrarVentas(ventas);
             return true;
         } else {
             System.out.println("El empleado no es de ventas.");
@@ -84,7 +84,7 @@ public class ClaseEmpresa {
         
         if (empleadoActual instanceof EmpleadoTemporal){
             EmpleadoTemporal empleadoActualVentas = (EmpleadoTemporal) empleadoActual;
-            empleadoActualVentas.ActualizarFinContrato(fechaNueva);
+            empleadoActualVentas.actualizarFinContrato(fechaNueva);
             return true;
         } else {
             System.out.println("El empleado no es Temporal.");
@@ -92,7 +92,7 @@ public class ClaseEmpresa {
         }
     }
     
-    public double CalcularPagoMensual(int codigo){
+    public double calcularPagoMensual(int codigo){
         Empleado empleadoActual = buscarEmpleado(codigo);
         
         if (empleadoActual == null){
@@ -100,7 +100,7 @@ public class ClaseEmpresa {
             return -1.0;
         }
         
-        return empleadoActual.CalcularPago();
+        return empleadoActual.calcularPago();
     }
     
     public String GenerarReportes(){
@@ -118,7 +118,7 @@ public class ClaseEmpresa {
             }
         }
         
-        reporte += "--- EMPLEADOS DE VENTAS ---\n";
+        reporte += "--- EMPLEADOS TEMPORALES ---\n";
         for (Empleado empleadoActual : Empleados){
             if (empleadoActual instanceof EmpleadoTemporal) {
                 contTemporal++;

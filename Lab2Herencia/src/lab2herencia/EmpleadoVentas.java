@@ -11,8 +11,10 @@ import java.util.Calendar;
     public EmpleadoVentas(int codigo, String nombre, Calendar fechaContrato, double salarioBase, String foto, double tasa){
         super(codigo, nombre, fechaContrato,salarioBase,foto);
         if (tasa <= 0) {
-        throw new IllegalArgumentException("La tasa debe ser mayor que 0"); }
-        this.tasa=tasa;
+            this.tasa = 0.05;
+        } else {
+            this.tasa = tasa;
+        }
     }
     
     public double getTasa() {
@@ -39,13 +41,12 @@ import java.util.Calendar;
     int mesint=queMes();
     double comision=0;
         comision+=meses[mesint]*tasa;
-         
-         return comision;
-      }
+        return comision;
+    }
     
    
     
-    public double pagoAnual(){
+    public double calcularVentasAnuales(){
     double pagoanual=0;
     for (double venta : meses) {
         pagoanual += venta;
@@ -74,7 +75,7 @@ import java.util.Calendar;
      @Override
      public String mostrarInformacion(){
         return super.mostrarInformacion()
-            + "\nVentas anuales: " + pagoAnual();
+            + "\nVentas anuales: " + calcularVentasAnuales();
      } 
     }
 

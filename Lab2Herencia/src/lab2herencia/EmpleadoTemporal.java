@@ -13,10 +13,9 @@ public class EmpleadoTemporal extends Empleado {
     }
 
     public void actualizarFinContrato(Calendar finContrato) {
-        if (finContrato == null) {
-            throw new IllegalArgumentException("La fecha de fin de contrato es obligatoria");
+        if (finContrato != null) {
+            this.finContrato = finContrato;
         }
-        
         this.finContrato = finContrato;
     }
 
