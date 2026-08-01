@@ -12,8 +12,8 @@
 
 # Package Files #
 *.jar
-!lib/*.jar
 !jcalendar-1.4.jar
+!**/lib/*.jar
 *.war
 *.nar
 *.ear
