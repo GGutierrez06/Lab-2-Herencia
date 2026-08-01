@@ -2,53 +2,54 @@
 package lab2herencia;
 import java.util.Locale;
 import java.util.Calendar;
-    public class EmpleadoVentas {
+    public class EmpleadoVentas extends Empleado {
     protected Calendar hoy = Calendar.getInstance();
-    protected double tot;
-    protected double[][] meses={
-        {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
-    };
+    protected double[] meses = new double[12];
     
     protected double tasa;
     
-    public EmpleadoVentas(double tasa){
-        super();
-        this.tot=0;
-        if(tasa>0){this.tasa=tasa;}
-        else{system.out.println("tasa invalida");}
+    public EmpleadoVentas(int codigo, String nombre, Calendar fechaContrato, double salarioBase, String foto, double tasa){
+        super(codigo, nombre, fechaContrato,salarioBase,foto);
+        if (tasa <= 0) {
+        throw new IllegalArgumentException("La tasa debe ser mayor que 0"); }
+        this.tasa=tasa;
     }
     
+    public double getTasa() {
+        return tasa;
+    }
+
+    public void setTasa(double tasaComision) {
+    if (tasaComision > 0) {
+        this.tasa = tasaComision;
+    } else {
+        System.out.println("La tasa debe ser mayor que 0");
+    }
+
+}
  
-    public void RegistrarVentas(double monto){
+    public void registrarVentas(double monto){
     int mesint=queMes();
     if(monto>0){
-        meses[mesint][meses[mesint].length]=monto;
+         meses[mesint] += monto;
     }else{System.out.println("ERROR Monto invalido");}
     }
     
     public double comision(){
     int mesint=queMes();
     double comision=0;
-    for(double mes:meses[mesint]){
-        comision+=mes*tasa;
-         }
+        comision+=meses[mesint]*tasa;
+         
          return comision;
       }
     
-    public double calcularPago(){
-    
-    
-    return 2;
-    }
+   
     
     public double pagoAnual(){
-    int mesint=queMes();
     double pagoanual=0;
-        for(double[] i:meses){
-            for(double mes: i){
-                pagoanual+=mes*tasa;
-                 }
-        }
+    for (double venta : meses) {
+        pagoanual += venta;
+    }
     return pagoanual;
     }
     
@@ -62,10 +63,18 @@ import java.util.Calendar;
         }
         return 0;
      }
-     public void mostrarInformacion(){
-     System.out.println("VENTA ANUAL: "+pagoAnual());
-     
-     
-     
+     @Override
+     public double calcularPago(){
+        double horasPago = getHorasTrabajadas();
+        double pago = (salarioBase * horasPago) / 160;
+        pago += comision();
+        return pago;
+    
+    }
+     @Override
+     public String mostrarInformacion(){
+        return super.mostrarInformacion()
+            + "\nVentas anuales: " + pagoAnual();
      } 
-}
+    }
+
